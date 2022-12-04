@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
+        <link rel="shortcut icon" type="image/x-icon" href="img/icono.png">
+        <title>DongWu</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <!-- Inicio de Header -->
+        <div class="header">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="header-left">
+                        <a  href="index.jsp" class="logo">
+                            <img src="img/logo.png">
+                        </a>
+                    </div>
+                </div>
+                <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+                <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+                <div class ="col-md-8 col-xl-9">
+                    <ul class="nav user-menu float-right">
+                        <li class="nav-item dropdown has-arrow">
+                            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                                <span class="user-img">
+                                    <i class="fa fa-user-circle-o"></i>
+                                </span>
+                                <span>Bienvenido Usuario</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Home.html">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown mobile-user-menu float-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="Home.html">Cerrar Sesión</a>               
+                    </div>
+                </div>
+            </div>                        
+        </div>
+        <!--Fin Header-->
+        <!--Inicio SideBar-->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Menú</li>
+                        <li>
+                            <a href="Productos.html"><i class="fa fa-paw"></i> <span>Productos</span></a>
+                        </li>
+                        <li>
+                            <a href="Veterinarias.html"><i class="fa fa-heartbeat"></i> <span>Veterinarias</span></a>
+                        </li>
+                        <li>
+                            <a href="Servicios.html"><i class="fa fa-shopping-cart"></i> <span>Servicios</span></a>
+                        </li>                        
+                        <li>
+                            <a href="actualizarDatos.html"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
+                        </li>
+                        <li>
+                            <a href="mediosPago.html"><i class="fa fa-credit-card-alt"></i> <span>Medios de Pago</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Fin SideBar-->
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <ul class="list-unstyled">
+                              <div id="smart-button-container">
+                                  <div style="text-align: center;">
+                                    <div id="paypal-button-container"></div>
+                                  </div>
+                                </div>
+                              <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+                              <script>
+                                function initPayPalButton() {
+                                  paypal.Buttons({
+                                    style: {
+                                      shape: 'rect',
+                                      color: 'silver',
+                                      layout: 'vertical',
+                                      label: 'pay',
+                                      
+                                    },
+
+                                    createOrder: function(data, actions) {
+                                      return actions.order.create({
+                                        purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+                                      });
+                                    },
+
+                                    onApprove: function(data, actions) {
+                                      return actions.order.capture().then(function(details) {
+                                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                      });
+                                    },
+
+                                    onError: function(err) {
+                                      console.log(err);
+                                    }
+                                  }).render('#paypal-button-container');
+                                }
+                                initPayPalButton();
+                              </script>                         
+                            </ul>                           
+                        </div>
+                    </div>
+                </div>
+                <!--Listado Mascotas Usuario-->
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                </div>
+                <!-- Inicio Area Footer  -->
+                <footer class="footer">
+                    <div class="footer_top">
+                        <div class="container">
+                            <div class="bordered_1px"></div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-9">
+                                    <p class="copy_right text-center">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados DongWu
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-lg-3">
+                                    <div class="footer_logo">
+                                        <a href="index.jsp">
+                                            <img src="img/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Fin Area Footer  -->
+            </div>
+            <!--Fin listado Mascotas Usuario-->
+            <div class="sidebar-overlay" data-reff=""></div>
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/jquery.slimscroll.js"></script>
+            <script src="js/select2.min.js"></script>
+            <script src="js/jquery.dataTables.min.js"></script>
+            <script src="js/dataTables.bootstrap4.min.js"></script>
+            <script src="js/moment.min.js"></script>
+            <script src="js/bootstrap-datetimepicker.min.js"></script>
+            <script src="js/app.js"></script>
+    </body>
+</html>
